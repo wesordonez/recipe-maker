@@ -5,8 +5,8 @@
 
 {% block content %}
     <section class="w-full min-h-[100vh] flex flex-col items-center justify-center p-8">
-        <div class="max-w-4xl w-full bg-white rounded-lg shadow-xl p-8">
-            <h1 class="text-4xl font-bold text-center mb-8">Recipe Generator</h1>
+        <div class="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8">
+            <h1 class="text-4xl font-bold text-center mb-8 text-black dark:text-white">Recipe Generator</h1>
             
             <div class="flex flex-col items-center gap-6">
                 <button id="generateRecipes" 
@@ -16,14 +16,14 @@
                 
                 <div id="loading" class="hidden">
                     <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
-                    <p class="mt-2 text-gray-600">Generating recipe ideas...</p>
+                    <p class="mt-2 text-gray-600 dark:text-gray-300">Generating recipe ideas...</p>
                 </div>
                 
                 <div id="recipeResults" class="w-full mt-8 prose prose-lg max-w-none
-                    prose-headings:text-blue-600 
-                    prose-strong:text-gray-700
-                    prose-p:text-gray-600
-                    prose-li:text-gray-600">
+                    prose-headings:text-blue-600 dark:prose-headings:text-blue-400
+                    prose-strong:text-gray-700 dark:prose-strong:text-gray-300
+                    prose-p:text-gray-600 dark:prose-p:text-gray-300
+                    prose-li:text-gray-600 dark:prose-li:text-gray-300">
                     <!-- Recipe results will be displayed here -->
                 </div>
             </div>
@@ -35,7 +35,5 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js" integrity="sha512-Ysw1DcK1P+uYLqprEAzNQJP+J4hTx4t/3X2nbVwszao8wD+9afLjBQYjz7Uk4ADP+Er++mJoScI42ueGtQOzEA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.css" integrity="sha512-rd0qOHVMOcez6pLWPVFIv7EfSdGKLt+eafXh4RO/12Fgr41hDQxfGvoi1Vy55QIVcQEujUE1LQrATCLl2Fs+ag==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-
     <script src="{% static "./js/home.js" %}"></script>
-
 {% endblock scripts %}

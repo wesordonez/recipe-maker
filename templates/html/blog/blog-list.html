@@ -22,14 +22,14 @@
             w-full  place-items-center 
             p-3 min-h-[100vh] md:px-[15%]">
 
-    <h1 class="w-full mt-[5%] text-3xl font-medium text-center">
+    <h1 class="w-full mt-[5%] text-3xl font-medium text-center text-black dark:text-white">
         Blogs
     </h1>
     
 
     {% if blogs|length == 0 %}
 
-        <div class="w-full mt-[10%] flex flex-col text-center text-xl place-items-center">
+        <div class="w-full mt-[10%] flex flex-col text-center text-xl place-items-center text-black dark:text-white">
             <p class="text-xl">No blogs yet.</p> 
         </div>
 
@@ -45,7 +45,7 @@
                     </div>
                 {% endif %}
                 <a href="{% url 'get-blog' slug=blog.slug  %}" 
-                                            class="text-md w-full h-full ">
+                                            class="text-md w-full h-full text-black dark:text-white">
                     <div class="text-3xl w-full 
                                 max-md:text-2xl mt-2">
                         <span>
@@ -57,46 +57,46 @@
                     </div>
                     <div class="mt-4 mb-[2%] w-full p-2 text-justify">
                         {% if blog.meta_description %}
-                            {{blog.meta_description}} <span class="!text-blue-500" style="color: #3495eb;">continue reading...</span>
+                            {{blog.meta_description}} <span class="!text-blue-500 dark:!text-blue-400" style="color: #3495eb;">continue reading...</span>
                         {% else %}
-                            {{blog.body|strip_html_tags|slice:":300"|safe}} <span class="!text-blue-500" style="color: #3495eb;">continue reading...</span>
+                            {{blog.body|strip_html_tags|slice:":300"|safe}} <span class="!text-blue-500 dark:!text-blue-400" style="color: #3495eb;">continue reading...</span>
                         {% endif %}
                     </div>
-                    <div class="text-sm text-gray-500 text-right">
+                    <div class="text-sm text-gray-500 dark:text-gray-400 text-right">
                         {% utc_to_local blog.datetime request.COOKIES.user_timezone %}
                     </div>
                 </a>
             </div>
-            <hr>
+            <hr class="border-gray-200 dark:border-gray-700">
         {% endfor %}
     </div>
     {% if blogs.has_previous or blogs.has_next %}
         <ul class="pagination">
             {% if blogs.has_previous %}
-                <a class="page-item " href="?page={{ blogs.previous_page_number }}">
+                <a class="page-item text-black dark:text-white" href="?page={{ blogs.previous_page_number }}">
                     <i class="bi bi-chevron-double-left"></i>
                 </a>
             {% else %}
-                <li class="disabled page-item "><span class="page-link bi bi-chevron-double-left"></span></li>
+                <li class="disabled page-item text-black dark:text-white"><span class="page-link bi bi-chevron-double-left"></span></li>
             {% endif %}
             {% for i in page_range|default_if_none:blogs.paginator.get_elided_page_range  %}
                 {% if blogs.number == i %}
-                    <li class="active page-item"><span class="page-link">{{ i }}</span>
+                    <li class="active page-item"><span class="page-link text-black dark:text-white">{{ i }}</span>
                     </li>
                 {% else %}
                     {% if i == blogs.paginator.ELLIPSIS %}
-                        <li class="page-item"><span class="page-link">{{ i }}</span></li>
+                        <li class="page-item"><span class="page-link text-black dark:text-white">{{ i }}</span></li>
                     {% else %}
-                        <a class="page-item" href="?page={{ i }}">{{ i }}</a>
+                        <a class="page-item text-black dark:text-white" href="?page={{ i }}">{{ i }}</a>
                     {% endif %}
                 {% endif %}
             {% endfor %}
             {% if blogs.has_next %}
-                <a class="page-item" href="?page={{ blogs.next_page_number }}">
+                <a class="page-item text-black dark:text-white" href="?page={{ blogs.next_page_number }}">
                     <i class="bi bi-chevron-double-right"></i>
                 </a>
             {% else %}
-                <li class="disabled page-item"><span class="page-link bi bi-chevron-double-right"></span></li>
+                <li class="disabled page-item text-black dark:text-white"><span class="page-link bi bi-chevron-double-right"></span></li>
             {% endif %}
         </ul>
     {% endif %}
