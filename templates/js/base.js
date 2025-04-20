@@ -89,3 +89,28 @@ function responsive() {
 }
 
 window.addEventListener("resize", responsive)
+
+
+
+// Dark mode functionality
+const themeToggle = document.getElementById('themeToggle');
+const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+
+// Check for saved theme preference or use system preference
+const currentTheme = localStorage.getItem('theme') || 
+                    (prefersDarkScheme.matches ? 'dark' : 'light');
+
+// Apply the theme
+if (currentTheme === 'dark') {
+    document.documentElement.classList.add('dark');
+}
+
+// Toggle theme
+themeToggle.addEventListener('click', () => {
+    const isDark = document.documentElement.classList.toggle('dark');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+// Timezone settings
+const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+document.cookie = "user_timezone=" + timezone;
