@@ -89,19 +89,17 @@
                     lg:justify-around
                     absolute top-0 px-[10%]
                     max-lg:mr-auto
-                    bg-white
-                    text-black
-                    ">
+                    bg-white dark:bg-gray-800
+                    text-black dark:text-white
+                    transition-colors duration-300">
 
         <a class="w-[50px] h-[50px] p-[4px]" href="{% url "home" %}">
             <img src="{% static "assets/logos/logo1.png" %}" 
                   alt="logo" class="w-full h-full object-contain">
-
         </a>
         <div class="collapsable-header animated-collapse max-lg:shadow-md"
-                    id="collapsed-header-items"
-                    >
-            <div class=" w-max
+                    id="collapsed-header-items">
+            <div class="w-max
                             text-base 
                             flex gap-5 h-full lg:mx-auto
                             lg:place-items-center 
@@ -109,138 +107,100 @@
                             max-lg:flex-col
                             max-lg:mt-[50px]
                             max-lg:gap-5
-                            text-black
-                        ">
+                            text-black dark:text-white">
                     
-                <a class="header-links" href="{% url "home" %}">
-                    About us
+                <a class="header-links hover:text-blue-600 dark:hover:text-blue-400" href="{% url "home" %}">
+                    Home
                 </a>
-                <a class="header-links" href="{% url "blogs" %}"
-                        rel="noreferrer"
-                        >
-                    Blogs
+                <a class="header-links hover:text-blue-600 dark:hover:text-blue-400" href="{% url "about" %}">
+                    About
                 </a>
-                <a class="header-links" href="{% url "contact-us" %}"
-                        rel="noreferrer"
-                        >
-                    Contact us
+                <a class="header-links hover:text-blue-600 dark:hover:text-blue-400" href="{% url "blogs" %}"
+                        rel="noreferrer">
+                    Updates
+                </a>
+                <a class="header-links hover:text-blue-600 dark:hover:text-blue-400" href="{% url "contact-us" %}"
+                        rel="noreferrer">
+                    Contact
                 </a>
             </div>
             <div class="flex gap-[20px] place-items-center text-xl
                          max-lg:!text-white
                          max-lg:place-content-center
-                        max-lg:w-full
-                         max-lg:place-items-start
-                         ">
-                <a href="https://www.facebook.com/" 
-                        target="_blank" 
-                        rel="noreferrer"
-                        aria-label="facebook"
-                        class=" header-links
-                                transition-colors
-                                duration-[0.3s]
-                                "
-                        >
-                    <i class="bi bi-facebook"></i>
-                </a>
-
-                <a href="https://www.instagram.com/"
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="instagram"
+                         max-lg:w-full
+                         max-lg:place-items-start">
+                <button id="themeToggle" 
                         class="header-links
                                 transition-colors
                                 duration-[0.3s]
-                                "
-                            >
-                    <i class="bi bi-instagram"></i>
-                </a>
-                <a href="https://github.com/PaulleDemon"
-                        target="_blank"
-                        rel="noreferrer"
-                        aria-label="github"
-                        class="header-links
-                                transition-colors
-                                duration-[0.3s]
-                                "
-                            >
-                    <i class="bi bi-github"></i>
-                </a>
+                                hover:text-blue-600 dark:hover:text-blue-400"
+                        aria-label="Toggle dark mode">
+                    <i class="bi bi-moon-fill dark:hidden"></i>
+                    <i class="bi bi-sun-fill hidden dark:block"></i>
+                </button>
             </div>
         </div>
-        <button class="absolute text-black z-50 
+        <button class="absolute text-black dark:text-white z-50 
                         right-3
                         top-3
-                        
-                         text-3xl  bi bi-list lg:hidden" 
+                        text-3xl bi bi-list lg:hidden" 
                 onclick="toggleHeader()" aria-label="menu" id="collapse-btn">
-            <!-- <i class="bi bi-list"></i> -->
         </button>
     </header>
 
     <div class="w-full h-full mt-[50px]">
         {% block content %}{% endblock content %}
     </div>
+
     <footer class="flex max-md:flex-col w-full p-[5%]
                     px-[10%] place-content-around gap-3 
-                    text-black
+                    text-black dark:text-white
+                    bg-white dark:bg-gray-800
                     mt-auto
-                    ">
+                    transition-colors duration-300">
         <div class="h-full w-[250px] flex flex-col 
                     gap-6 place-items-center max-md:w-full">
             
             <img src="{% static "assets/logos/logo1.png" %}" 
-                alt="logo"  class="max-w-[150px] max-md:max-w-[120px]">
-            <div>
-                2 Lord Edward St,   
+                alt="logo" class="max-w-[150px] max-md:max-w-[120px]">
+            <div class="text-center">
+                Recipe Maker
                 <br>
-                D02 P634,
+                A project by Wes Ordonez
                 <br>
-                United States
+                Making meal planning easier
             </div>
             <div class="mt-3 font-semibold text-lg">
-                Follow us
+                Navigation
             </div>
-            <div class="flex gap-4 text-2xl">
-                <a href="https://facebook.com/" aria-label="Facebook">
-                    <i class="bi bi-facebook"></i>
-                </a>
-                <a href="https://twitter.com/pauls_freeman" aria-label="Twitter">
-                    <i class="bi bi-twitter"></i>
-                </a>
-                <a href="https://instagram.com/" class="w-[40px] h-[40px]" aria-label="Instagram">
-                   <i class="bi bi-instagram"></i>
-                </a>
+            <div class="flex flex-col gap-2 text-center">
+                <a href="{% url "home" %}" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">Home</a>
+                <a href="{% url "about" %}" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                <a href="{% url "blogs" %}" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">Updates</a>
+                <a href="{% url "contact-us" %}" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
             </div>
         </div>
 
         <div class="h-full w-[250px] flex flex-col 
                     gap-4">
-
             <h2 class="text-3xl max-md:text-xl">
                 Resources
             </h2>
-            <div class=" flex flex-col gap-3 max-md:text-sm">
-                <a href="{% url "home" %}" class="footer-link">About us</a>
-                <a href="" class="footer-link">FAQ</a>
-                <a href="{% url "contact-us" %}" class="footer-link">Contact Us</a>
-                <a href="" class="footer-link">Privacy policy</a>
+            <div class="flex flex-col gap-3 max-md:text-sm">
+                <a href="{% url "about" %}" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">About the Project</a>
+                <a href="{% url "blogs" %}" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">Latest Updates</a>
+                <a href="{% url "contact-us" %}" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">Get in Touch</a>
+                <a href="#" class="footer-link hover:text-blue-600 dark:hover:text-blue-400">Privacy Policy</a>
             </div>
-
         </div>
 
         {% block footer %}
         {% endblock footer %}
-
     </footer>
 </body>
 
-{% comment %} <script src="{% static "./js/base.js" %}"></script> {% endcomment %}
-<script>
-    // Timezone settings
-    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone; // e.g. "America/New_York"
-    document.cookie = "user_timezone=" + timezone;
-</script>
+<script src="{% static "./js/base.js" %}"></script>
+
 {% comment %} <script src="https://unpkg.com/quill-paste-smart@latest/dist/quill-paste-smart.js"></script> {% endcomment %}
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>

@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% load custom_tags %}
+
+{% block content %}
+    <section class="w-full min-h-[100vh] flex flex-col items-center p-8">
+        <div class="max-w-4xl w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl p-8">
+            <h1 class="text-4xl font-bold text-center mb-8">About Recipe Maker</h1>
+            
+            <div class="prose dark:prose-invert max-w-none">
+                <h2 class="text-2xl font-semibold mb-4">The Project</h2>
+                <p class="mb-6">
+                    Recipe Maker is a personal project created by Wes Ordonez to make meal planning easier and more efficient. 
+                    The goal is to help people create delicious meals based on what's available in their local stores' weekly ads.
+                </p>
+
+                <h2 class="text-2xl font-semibold mb-4">How It Works</h2>
+                <p class="mb-6">
+                    Using n8n automation, Recipe Maker analyzes weekly ads from local stores and generates recipe ideas 
+                    based on the available ingredients. This helps you:
+                </p>
+                <ul class="list-disc pl-6 mb-6">
+                    <li>Save money by using ingredients that are on sale</li>
+                    <li>Discover new recipes based on available ingredients</li>
+                    <li>Plan your meals more efficiently</li>
+                    <li>Reduce food waste by using what's available</li>
+                </ul>
+
+                <h2 class="text-2xl font-semibold mb-4">Roadmap</h2>
+                <div class="space-y-4">
+                    <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Phase 1: Basic Recipe Generation</h3>
+                        <ul class="list-disc pl-6">
+                            <li>Generate recipe ideas from weekly ads</li>
+                            <li>Display recipes in a clean, readable format</li>
+                            <li>Basic dark/light mode support</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Phase 2: Enhanced Features</h3>
+                        <ul class="list-disc pl-6">
+                            <li>User accounts and preferences</li>
+                            <li>Save favorite recipes</li>
+                            <li>Customize recipe generation based on dietary restrictions</li>
+                            <li>Add more store weekly ads support</li>
+                        </ul>
+                    </div>
+
+                    <div class="p-4 bg-gray-100 dark:bg-gray-700 rounded-lg">
+                        <h3 class="text-xl font-semibold mb-2">Phase 3: Advanced Features</h3>
+                        <ul class="list-disc pl-6">
+                            <li>Meal planning calendar</li>
+                            <li>Shopping list generation</li>
+                            <li>Nutritional information</li>
+                            <li>Recipe scaling for different serving sizes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h2 class="text-2xl font-semibold mt-8 mb-4">Get Involved</h2>
+                <p class="mb-6">
+                    This is an ongoing project, and I'm always looking for feedback and suggestions. 
+                    If you have ideas for new features or improvements, feel free to reach out through the contact page!
+                </p>
+            </div>
+        </div>
+    </section>
+{% endblock content %}
