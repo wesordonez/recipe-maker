@@ -13,11 +13,14 @@ if (generateButton) {
         results.innerHTML = '';
         
         try {
-            const response = await fetch('YOUR_N8N_WEBHOOK_URL', {
+            const response = await fetch('https://n8n.dunosis.com/webhook-test/02324205-f857-4c82-b3df-66071632016e', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
+                body: JSON.stringify({
+                    requestType: 'generateRecipes'
+                })
             });
             
             if (!response.ok) {
@@ -26,8 +29,11 @@ if (generateButton) {
             
             const data = await response.json();
             
-            // Assuming the response contains markdown text
-            results.innerHTML = marked.parse(data.markdown);
+            if (Array.isArray(data) && data.length > 0 && data[0].markdown) {
+                results.innerHTML = marked.parse(data[0].markdown);
+            } else {
+                throw new Error('Invalid response format from server');
+            }
         } catch (error) {
             results.innerHTML = `<div class="text-red-600">Error: ${error.message}</div>`;
         } finally {
